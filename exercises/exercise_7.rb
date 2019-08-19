@@ -14,6 +14,12 @@ puts "----------"
 puts "Enter a new store name here"
 
 new_store = gets.chomp
-Store.create!(
-  name: new_store
-)
+
+begin
+  Store.create!(
+    name: new_store
+  )
+rescue ActiveRecord::RecordInvalid => err
+  # rec
+  puts err
+end
